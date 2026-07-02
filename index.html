@@ -461,7 +461,7 @@ body.lb-open .gallery-track{animation-play-state:paused}
   var gtrack=document.querySelector('.gallery-track');
   if(gtrack && !RM){
     [].slice.call(gtrack.children).forEach(function(n){ gtrack.appendChild(n.cloneNode(true)); });
-    var setDur=function(){ var one=gtrack.scrollWidth/2; if(one>40) gtrack.style.animationDuration=Math.round(one/42)+'s'; };
+    var setDur=function(){ var one=gtrack.scrollWidth/2; if(one>40) gtrack.style.animationDuration=Math.round(one/24)+'s'; };
     if(window.requestAnimationFrame) requestAnimationFrame(setDur); else setDur();
     addEventListener('resize', setDur);
   }
