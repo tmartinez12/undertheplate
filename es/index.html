@@ -480,32 +480,35 @@ body.lb-open .gallery-track{animation-play-state:paused}
   var galDragged=false;
   var galEl=document.querySelector('.gallery');
   if(gtrack && galEl && !RM){
-    var dragging=false, dragStartX=0, dragBaseX=0, dragMoved=0;
+    // drag engages ONLY after the pointer moves >6px, so a plain click still
+    // reaches the photo (pausing/capturing on pointerdown was eating the click)
+    var dragging=false, active=false, dragStartX=0, dragBaseX=0, dragMoved=0, pid=null;
     var mx=function(){ var t=getComputedStyle(gtrack).transform||'none';
       var m=/matrix\(([^)]+)\)/.exec(t); return m?parseFloat(m[1].split(',')[4]):0; };
     galEl.addEventListener('pointerdown',function(e){
-      dragging=true; dragMoved=0; dragStartX=e.clientX; dragBaseX=mx();
-      gtrack.style.animation='none';
-      gtrack.style.transform='translateX('+dragBaseX+'px)';
-      if(galEl.setPointerCapture) galEl.setPointerCapture(e.pointerId);
+      dragging=true; active=false; dragMoved=0; dragStartX=e.clientX; pid=e.pointerId;
     });
     addEventListener('pointermove',function(e){
       if(!dragging) return;
       var d=e.clientX-dragStartX; dragMoved=Math.max(dragMoved,Math.abs(d));
+      if(!active){
+        if(dragMoved<=6) return;                 // still a potential click
+        active=true; dragBaseX=mx();
+        gtrack.style.animation='none';
+        try{ if(galEl.setPointerCapture) galEl.setPointerCapture(pid); }catch(e2){}
+      }
       var half=gtrack.scrollWidth/2 || 1;
-      var x=dragBaseX+d;
-      x=((x%half)+half)%half - half;  // wrap into the seamless loop
+      var x=((dragBaseX+d)%half+half)%half - half;  // wrap into the seamless loop
       gtrack.style.transform='translateX('+x+'px)';
     });
     var dragEnd=function(){
       if(!dragging) return; dragging=false;
-      if(dragMoved>6){ galDragged=true; setTimeout(function(){ galDragged=false; },80); }
-      var half=gtrack.scrollWidth/2 || 1;
-      var p=(-mx())/half;
-      var D=parseFloat(gtrack.style.animationDuration)||90;
-      gtrack.style.animation='';               // back to the CSS keyframes...
-      gtrack.style.animationDelay=(-p*D)+'s';  // ...starting from where the hand let go
-      gtrack.style.transform='';
+      if(!active) return;                          // plain click -> let it open the lightbox
+      galDragged=true; setTimeout(function(){ galDragged=false; },80);
+      var half=gtrack.scrollWidth/2 || 1, p=(-mx())/half, D=parseFloat(gtrack.style.animationDuration)||90;
+      gtrack.style.animation='';                   // back to the CSS keyframes...
+      gtrack.style.animationDelay=(-p*D)+'s';      // ...from where the hand let go
+      gtrack.style.transform=''; active=false;
     };
     addEventListener('pointerup',dragEnd); addEventListener('pointercancel',dragEnd);
   }
