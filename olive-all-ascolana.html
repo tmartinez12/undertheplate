@@ -10,6 +10,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://undertheplate.xyz/olive-all-ascolana.html">
 <meta property="og:url" content="https://undertheplate.xyz/olive-all-ascolana.html">
+<link rel="alternate" hreflang="en" href="https://undertheplate.xyz/olive-all-ascolana.html">
+<link rel="alternate" hreflang="es" href="https://undertheplate.xyz/es/olive-all-ascolana.html">
+<link rel="alternate" hreflang="x-default" href="https://undertheplate.xyz/olive-all-ascolana.html">
 <link rel="icon" type="image/png" href="/assets/9b03e0a728c2.png">
 <link rel="apple-touch-icon" href="/assets/1b19da7ca67b.png">
 <meta name="description" content="Olive all&#x27;ascolana: Italian fried stuffed olives. A family recipe from Ascoli Piceno shared by Lorenzo Simonella, with its story, ingredients and step-by-step preparation.">
@@ -161,7 +164,10 @@ h2.sec{font-weight:700;font-size:clamp(23px,2.7vw,31px);letter-spacing:-.018em;l
 .tn-links{display:flex;align-items:center;justify-content:center;gap:clamp(22px,3.8vw,40px)}
 .tn-links a{position:relative;font-weight:600;font-size:clamp(14.5px,1.7vw,16px);letter-spacing:.005em;color:#1c1a17;text-decoration:none;padding:7px 2px}
 .tn-links a::after{content:'';position:absolute;left:-3px;right:-3px;bottom:-1px;height:9px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 10' preserveAspectRatio='none'%3E%3Cpath d='M2 6 C 22 2 42 9 62 5 S 100 3 118 6' fill='none' stroke='%23FBE372' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%;opacity:0;transition:opacity .25s ease;pointer-events:none}
-@media(pointer:fine){.tn-links a:hover::after{opacity:1}}
+@media(pointer:fine){.tn-links a:not(.tn-lang):hover::after{opacity:1}}
+.tn-lang{border:1.5px solid rgba(28,26,23,.28);border-radius:99px;padding:5px 12px!important;font-size:12.5px!important;font-weight:700!important;letter-spacing:.06em;text-decoration:none}
+.tn-lang::after{display:none!important}
+@media(pointer:fine){.tn-lang:hover{border-color:#1c1a17;background:rgba(28,26,23,.05)}}
 .tn-cta{justify-self:end;display:inline-flex;align-items:center;gap:8px;line-height:1;white-space:nowrap;background:#1c1a17;color:#fff;padding:14px 22px;border-radius:99px;font-weight:700;font-size:clamp(13.5px,1.6vw,14.5px);letter-spacing:.01em;text-decoration:none;box-shadow:2.5px 2.5px 0 #FBE372;transition:box-shadow .18s ease,transform .12s ease,background .18s ease}
 .tn-cta .ar{display:inline-block;transition:transform .18s ease}
 @media(pointer:fine){.tn-cta:hover{box-shadow:4px 4px 0 #FBE372;background:#000}.tn-cta:hover .ar{transform:translateX(3px)}}
@@ -221,6 +227,7 @@ h2.sec{font-weight:700;font-size:clamp(23px,2.7vw,31px);letter-spacing:-.018em;l
     <a class="tn-hide" href="index.html#about">About</a>
     <a href="index.html#recetas">Recipes</a>
     <a class="tn-hide" href="index.html#gathering">Gatherings</a>
+    <a class="tn-lang" id="langtoggle" href="/">ES</a>
   </div>
   <a class="tn-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSeAQPBK7q27zrNvHalyB3b9B5VuP7gHWguC5ITt_XHsE-wFiA/viewform?usp=header" target="_blank" rel="noopener noreferrer">Share a recipe <span class="ar" aria-hidden="true">&#8594;</span></a>
 </nav>
@@ -251,7 +258,7 @@ h2.sec{font-weight:700;font-size:clamp(23px,2.7vw,31px);letter-spacing:-.018em;l
     </div>
   </div>
 </section>
-<div class="share-toast" id="sharetoast" role="status" hidden>Link copied. Pass the plate!</div>
+<div class="share-toast" id="sharetoast" role="status" data-msg="Link copied. Pass the plate!" hidden>Link copied. Pass the plate!</div>
 <section class="more"><div class="sheet-in more-in"><h2 class="sec recipe-title reveal">You might also like</h2><a class="reccard reveal" style="transition-delay:.08s" href="zereshk-polo.html"><span class="rc-art"><img loading="lazy" decoding="async" alt="" src="/assets/740c23402d1e.webp"></span><span class="rc-body"><span class="rc-eyebrow">Next recipe</span><span class="rc-title">Zereshk Polo</span><span class='rc-place'>Iran</span><span class="rc-cta">View recipe <span class="ar">&#8594;</span></span></span></a></div></section>
 <footer class="site-foot">
   <p class="f-brand">Under the Plate</p>
@@ -264,6 +271,19 @@ h2.sec{font-weight:700;font-size:clamp(23px,2.7vw,31px);letter-spacing:-.018em;l
 </footer>
 <script>
 (function(){
+  // language toggle + auto-detect (path-based; /es/ mirror exists for every page)
+  try{
+    var p=location.pathname, isES=/^\/es(\/|$)/.test(p), s=localStorage.getItem('utp_lang');
+    var toES=function(){ return (p==='/'||p==='')?'/es/':(isES?p:'/es'+p); };
+    var toEN=function(){ return p.replace(/^\/es\/?/,'/'); };
+    var tog=document.getElementById('langtoggle');
+    if(tog){ tog.setAttribute('href', isES?toEN():toES());
+      tog.addEventListener('click',function(){ try{localStorage.setItem('utp_lang', isES?'en':'es');}catch(e){} }); }
+    var w=s||(((navigator.language||'').toLowerCase().indexOf('es')===0)?'es':'en');
+    if(w==='es'&&!isES) location.replace(toES());
+    else if(w==='en'&&isES) location.replace(toEN());
+  }catch(e){}
+
   // scroll reveals (same pattern as the main site)
   var els=[].slice.call(document.querySelectorAll('.reveal'));
   if(window.IntersectionObserver){
@@ -279,7 +299,7 @@ h2.sec{font-weight:700;font-size:clamp(23px,2.7vw,31px);letter-spacing:-.018em;l
   }
   function copy(){
     var url=location.href;
-    var done=function(){ toast('Link copied. Pass the plate!'); };
+    var done=function(){ toast(t.getAttribute('data-msg')||'Link copied.'); };
     if(navigator.clipboard && navigator.clipboard.writeText){
       navigator.clipboard.writeText(url).then(done,function(){ legacy(); });
     } else { legacy(); }
