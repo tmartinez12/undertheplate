@@ -182,9 +182,10 @@ h2.sec{font-weight:700;font-size:clamp(23px,2.7vw,31px);letter-spacing:-.018em;l
 .share-toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:70;background:#1c1a17;color:#fff;padding:13px 22px;border-radius:99px;font-weight:600;font-size:14px;box-shadow:2.5px 2.5px 0 #FBE372;white-space:nowrap}
 .share-toast[hidden]{display:none}
 /* footer: yellow band with a hand-cut cream edge (echoes the main site) */
-.site-foot{position:relative;background:#FBE372;text-align:center;padding:clamp(46px,8vw,78px) clamp(20px,5vw,40px) clamp(42px,7vw,66px)}
+.site-foot{position:relative;background:#FBE372;text-align:center;padding:clamp(38px,7vw,58px) clamp(20px,5vw,40px) clamp(34px,6vw,50px)}
 .site-foot::before{content:'';position:absolute;left:0;right:0;top:0;height:14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 14' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L1200 0 L1200 7 C1140 3 1080 11 1000 7 C920 3 860 12 770 8 C680 4 620 12 530 8 C440 4 380 11 290 7 C200 3 140 11 60 8 C38 6.5 16 8 0 6 Z' fill='%23faf7f0'/%3E%3C/svg%3E") no-repeat;background-size:100% 100%;pointer-events:none}
-.f-brand{font-weight:700;font-size:clamp(18px,2.4vw,22px);letter-spacing:-.015em;color:#1c1a17;margin:0}
+.f-squiggle{display:block;width:64px;height:9px;margin:0 auto 14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 10' preserveAspectRatio='none'%3E%3Cpath d='M2 6 C 22 2 42 9 62 5 S 100 3 118 6' fill='none' stroke='%23ffffff' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%}
+.f-brand{font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.16em;color:#1c1a17;margin:0}
 @media(max-width:780px){
   .seg{grid-template-columns:1fr;gap:clamp(34px,8vw,48px)}
   .ingredients-card{grid-template-columns:1fr;gap:clamp(18px,5vw,26px);width:100%}
@@ -256,6 +257,7 @@ h2.sec{font-weight:700;font-size:clamp(23px,2.7vw,31px);letter-spacing:-.018em;l
 <div class="share-toast" id="sharetoast" role="status" data-msg="Link copied. Pass the plate!" hidden>Link copied. Pass the plate!</div>
 <section class="more"><div class="sheet-in more-in"><h2 class="sec recipe-title reveal">You might also like</h2><a class="reccard reveal" style="transition-delay:.08s" href="pepino-relleno.html"><span class="rc-art"><img loading="lazy" decoding="async" alt="" src="/assets/0225d99e773a.webp"></span><span class="rc-body"><span class="rc-eyebrow">Next recipe</span><span class="rc-title">Pepino relleno</span><span class='rc-place'>Colombia</span><span class="rc-cta">View recipe <span class="ar">&#8594;</span></span></span></a></div></section>
 <footer class="site-foot">
+  <span class="f-squiggle" aria-hidden="true"></span>
   <p class="f-brand">Under the Plate</p>
 </footer>
 <script>
