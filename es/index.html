@@ -218,13 +218,7 @@ body.nav-on .brand{opacity:0}
 /* footer: a warm full-bleed cream band with a hand-cut top edge */
 footer{position:relative;margin-top:clamp(48px,10vw,84px);width:100vw;margin-left:calc(50% - 50vw);background:#faf7f0;text-align:center;padding:clamp(50px,9vw,86px) clamp(20px,5vw,40px) clamp(46px,8vw,74px)}
 footer::before{content:'';position:absolute;left:0;right:0;top:0;height:14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 14' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L1200 0 L1200 7 C1140 3 1080 11 1000 7 C920 3 860 12 770 8 C680 4 620 12 530 8 C440 4 380 11 290 7 C200 3 140 11 60 8 C38 6.5 16 8 0 6 Z' fill='%23ffffff'/%3E%3C/svg%3E") no-repeat;background-size:100% 100%;pointer-events:none}
-.f-brand{font-family:'Work Sans',sans-serif;font-weight:700;font-size:clamp(19px,2.6vw,23px);letter-spacing:-.015em;color:var(--ink);margin:0 0 clamp(16px,2.8vw,24px)}
-.f-links{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:clamp(18px,3.4vw,32px)}
-.f-links a{position:relative;font-family:'Work Sans',sans-serif;font-weight:600;font-size:14px;color:var(--ink);text-decoration:none;padding:6px 1px}
-.f-links a::after{content:'';position:absolute;left:-3px;right:-3px;bottom:-1px;height:9px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 10' preserveAspectRatio='none'%3E%3Cpath d='M2 6 C 22 2 42 9 62 5 S 100 3 118 6' fill='none' stroke='%23FBE372' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%;opacity:0;transition:opacity .25s ease;pointer-events:none}
-@media(pointer:fine){.f-links a:hover::after{opacity:1}}
-.f-squiggle{display:block;width:96px;height:11px;margin:clamp(26px,4.6vw,40px) auto clamp(14px,2.6vw,20px);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 10' preserveAspectRatio='none'%3E%3Cpath d='M2 6 C 22 2 42 9 62 5 S 100 3 118 6' fill='none' stroke='%23FBE372' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%}
-.f-credit{margin:0;text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--soft);font-weight:500}
+.f-brand{font-family:'Work Sans',sans-serif;font-weight:700;font-size:clamp(19px,2.6vw,23px);letter-spacing:-.015em;color:var(--ink);margin:0}
 /* "Our Under the Plate Gathering" — yellow band + slow horizontal photo marquee */
 .gathering{position:relative;margin-top:0;width:100vw;margin-left:calc(50% - 50vw);background:#FBE372;padding:clamp(46px,8vw,84px) 0 clamp(44px,7vw,74px);overflow:hidden}
 .gathering-head{max-width:660px;margin:0 auto;padding:0 clamp(20px,5vw,40px);text-align:center}
@@ -417,16 +411,7 @@ body.lb-open .gallery-track{animation-play-state:paused}
     </div>
   </section>
   <footer>
-    <p class="f-brand">Under the Plate</p>
-    <nav class="f-links" aria-label="Footer">
-      <a href="#about">El proyecto</a>
-      <a href="#recetas">Recetas</a>
-      <a href="#gathering">Encuentros</a>
-      <a href="#signup">Próximos encuentros</a>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeAQPBK7q27zrNvHalyB3b9B5VuP7gHWguC5ITt_XHsE-wFiA/viewform?usp=header" target="_blank" rel="noopener noreferrer">Comparte una receta</a>
-    </nav>
-    <span class="f-squiggle" aria-hidden="true"></span>
-    <p class="f-credit">hecho con amor para ti<button class="tomhome" id="tomhome" type="button" title="Send the tomato back to its plate" hidden><img loading="lazy" decoding="async" id="tomhomeimg" alt="A runaway tomato resting by the footer"></button></p>
+    <p class="f-brand">Under the Plate<button class="tomhome" id="tomhome" type="button" title="Send the tomato back to its plate" hidden><img loading="lazy" decoding="async" id="tomhomeimg" alt="A runaway tomato resting by the footer"></button></p>
   </footer>
 </main>
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo from our gathering. Click anywhere or press Escape to close." hidden>

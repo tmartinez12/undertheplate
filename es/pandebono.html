@@ -184,12 +184,7 @@ h2.sec{font-weight:700;font-size:clamp(23px,2.7vw,31px);letter-spacing:-.018em;l
 /* footer: yellow band with a hand-cut cream edge (echoes the main site) */
 .site-foot{position:relative;background:#FBE372;text-align:center;padding:clamp(46px,8vw,78px) clamp(20px,5vw,40px) clamp(42px,7vw,66px)}
 .site-foot::before{content:'';position:absolute;left:0;right:0;top:0;height:14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 14' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L1200 0 L1200 7 C1140 3 1080 11 1000 7 C920 3 860 12 770 8 C680 4 620 12 530 8 C440 4 380 11 290 7 C200 3 140 11 60 8 C38 6.5 16 8 0 6 Z' fill='%23faf7f0'/%3E%3C/svg%3E") no-repeat;background-size:100% 100%;pointer-events:none}
-.f-brand{font-weight:700;font-size:clamp(18px,2.4vw,22px);letter-spacing:-.015em;color:#1c1a17;margin:0 0 clamp(14px,2.4vw,20px)}
-.f-links{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:clamp(18px,3.4vw,32px)}
-.f-links a{position:relative;font-weight:600;font-size:14px;color:#1c1a17;text-decoration:none;padding:6px 2px}
-.f-links a::after{content:'';position:absolute;left:-3px;right:-3px;bottom:-1px;height:9px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 10' preserveAspectRatio='none'%3E%3Cpath d='M2 6 C 22 2 42 9 62 5 S 100 3 118 6' fill='none' stroke='%23ffffff' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%;opacity:0;transition:opacity .25s ease;pointer-events:none}
-@media(pointer:fine){.f-links a:hover::after{opacity:1}}
-.f-credit{margin:clamp(20px,3.6vw,30px) 0 0;text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:500;color:rgba(28,26,23,.62)}
+.f-brand{font-weight:700;font-size:clamp(18px,2.4vw,22px);letter-spacing:-.015em;color:#1c1a17;margin:0}
 @media(max-width:780px){
   .seg{grid-template-columns:1fr;gap:clamp(34px,8vw,48px)}
   .ingredients-card{grid-template-columns:1fr;gap:clamp(18px,5vw,26px);width:100%}
@@ -262,12 +257,6 @@ h2.sec{font-weight:700;font-size:clamp(23px,2.7vw,31px);letter-spacing:-.018em;l
 <section class="more"><div class="sheet-in more-in"><h2 class="sec recipe-title reveal">También te puede gustar</h2><a class="reccard reveal" style="transition-delay:.08s" href="pepino-relleno.html"><span class="rc-art"><img loading="lazy" decoding="async" alt="" src="/assets/0225d99e773a.webp"></span><span class="rc-body"><span class="rc-eyebrow">Siguiente receta</span><span class="rc-title">Pepino relleno</span><span class='rc-place'>Colombia</span><span class="rc-cta">Ver receta <span class="ar">&#8594;</span></span></span></a></div></section>
 <footer class="site-foot">
   <p class="f-brand">Under the Plate</p>
-  <nav class="f-links" aria-label="Footer">
-    <a href="index.html#recetas">Todas las recetas</a>
-    <a href="index.html#signup">Próximos encuentros</a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeAQPBK7q27zrNvHalyB3b9B5VuP7gHWguC5ITt_XHsE-wFiA/viewform?usp=header" target="_blank" rel="noopener noreferrer">Comparte una receta</a>
-  </nav>
-  <p class="f-credit">hecho con amor para ti</p>
 </footer>
 <script>
 (function(){
