@@ -271,8 +271,7 @@ h2.sec{font-weight:700;font-size:clamp(23px,2.7vw,31px);letter-spacing:-.018em;l
     if(tog){ tog.setAttribute('href', isES?toEN():toES());
       tog.addEventListener('click',function(){ try{localStorage.setItem('utp_lang', isES?'en':'es');}catch(e){} }); }
     var w=s||(((navigator.language||'').toLowerCase().indexOf('es')===0)?'es':'en');
-    if(w==='es'&&!isES) location.replace(toES());
-    else if(w==='en'&&isES) location.replace(toEN());
+    if(w==='es'&&!isES) location.replace(toES());  // never auto-leave /es/ (SEO: bots must index it)
   }catch(e){}
 
   // scroll reveals (same pattern as the main site)
