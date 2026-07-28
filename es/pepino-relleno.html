@@ -262,7 +262,7 @@ h2.sec{font-weight:700;font-size:clamp(23px,2.7vw,31px);letter-spacing:-.018em;l
 </footer>
 <script>
 (function(){
-  // language toggle + auto-detect (path-based; /es/ mirror exists for every page)
+  // language toggle (path-based; /es/ mirror exists for every page)
   try{
     var p=location.pathname, isES=/^\/es(\/|$)/.test(p), s=localStorage.getItem('utp_lang');
     var toES=function(){ return (p==='/'||p==='')?'/es/':(isES?p:'/es'+p); };
@@ -270,8 +270,10 @@ h2.sec{font-weight:700;font-size:clamp(23px,2.7vw,31px);letter-spacing:-.018em;l
     var tog=document.getElementById('langtoggle');
     if(tog){ tog.setAttribute('href', isES?toEN():toES());
       tog.addEventListener('click',function(){ try{localStorage.setItem('utp_lang', isES?'en':'es');}catch(e){} }); }
-    var w=s||(((navigator.language||'').toLowerCase().indexOf('es')===0)?'es':'en');
-    if(w==='es'&&!isES) location.replace(toES());  // never auto-leave /es/ (SEO: bots must index it)
+    // Only ever act on that explicit choice — never on navigator.language. Google
+    // advises against auto-redirecting by perceived language, and it kept ES-locale
+    // crawlers from ever reaching the English pages.
+    if(s==='es'&&!isES) location.replace(toES());
   }catch(e){}
 
   // scroll reveals (same pattern as the main site)
